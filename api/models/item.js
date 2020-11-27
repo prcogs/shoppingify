@@ -7,4 +7,4 @@ const itemSchema = mongoose.Schema({
     image : { type : String, require : true}
 })
 
-module.exports = mongoose.models('Item', itemSchema)
+module.exports = mongoose.model('Items', itemSchema)

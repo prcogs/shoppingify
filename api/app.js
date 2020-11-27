@@ -1,12 +1,15 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
-const Thing = require('./models/thing');
-const Useur = require('./models/useur')
+
+const itemRoutes = require('./routes/item')
+const categoryRoutes = require('./routes/category')
+const histroryListRoutes = require('./routes/historyList')
+const userRoutes = require('./routes/user');
 
 const app = express();
 
-mongoose.connect('mongodb+srv://precogs:aeqwLXTx5XzAsgZ@cluster0.fg3g6.mongodb.net/sample_restaurants?retryWrites=true&w=majority',
+mongoose.connect('mongodb+srv://precogs:aeqwLXTx5XzAsgZ@cluster0.fg3g6.mongodb.net/shoppingify?retryWrites=true&w=majority',
   { useNewUrlParser: true,
     useUnifiedTopology: true })
   .then(() =>  { console.log('Connexion à MongoDB réussie !')})
@@ -20,40 +23,13 @@ app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH, OPTIONS');
     next();
 });
+app.use(bodyParser.json()); 
 
-app.use(bodyParser.json());
 
-app.post('/api/useur', (req, res, next) => {
-    const useur = new Useur(
-        {
-            pseudo : "precogs",
-            pass : "precogs",
-            token : "",
-            history : {
-                date : 01/01/20,
-                completed : false,
-                list : {
-                    name : "list",
-                    items : {
-                        name : "Mozza",
-                        number : 1,
-                        check : false
-                    }
-                }
-            }
-        })
-
-    useur.save()
-      .then(() => res.status(201).json({ message: 'Objet enregistré !'}))
-      .catch(error => res.status(400).json({ error }));
-  });
-
-app.use((req, res, next) => {
-    Thing.find()
-    .then(things => res.status(200).json(things))
-    .catch(error => res.status(400).json({ error }));
-})
-
+app.use('/api/item', itemRoutes)
+app.use('/api/category', categoryRoutes)
+app.use('/api/history-list', histroryListRoutes)
+app.use('/api/auth', userRoutes);
 
 
 module.exports = app;
