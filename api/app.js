@@ -29,7 +29,7 @@ app.use(bodyParser.json());
 app.use('/api/item', itemRoutes)
 app.use('/api/category', categoryRoutes)
 app.use('/api/history-list', histroryListRoutes)
-app.use('/api/auth', userRoutes);
+app.use('/api/auth', userRoutes)
 
 
 module.exports = app;
