@@ -1,17 +1,22 @@
-import { SHOW_ITEMS } from '../constants'
+import { UPDATE_FILTER_ITEMS } from '../constants'
 
 const initItem = [
     {
-        name:"chocolat"
+        name:"chocolat",
+        category:"dessert"
     }, {
-        name:"sucre"
+        name:"pâte",
+        category:"féculent"
+    }, {
+        name:"pizza",
+        category:"féculent"
     }
 ]
 
 const itemsReducer = (state = initItem, action) => {
     switch (action.type) {
-        case SHOW_ITEMS:
-            return state
+        // case UPDATE_FILTER_ITEMS:
+        //     return action.payload
         default:
             return state
     }
