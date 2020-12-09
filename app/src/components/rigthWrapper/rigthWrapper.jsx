@@ -8,7 +8,6 @@ export const RigthWrapper = () => {
         <div className="rigthWrapper">
             <WrapperAddItemStore/>
             <ShoppingListStore/>
-            rigth
         </div>
     )
 }

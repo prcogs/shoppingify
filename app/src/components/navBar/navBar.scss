@@ -1,8 +1,30 @@
 @import "../../styles/main.scss";
 
 .navBar {
+    display: flex;
+    align-items: center;
     width: 10vw;
 
     background-color: $color-background-nav;
+
+    ul {
+        width: 100%;
+        list-style: none;
+        padding: 0;
+        text-align: center;
+
+        li {
+            padding-top: 2rem;
+            padding-bottom: 2rem;;
+        }
+    }
+
+    &__icon {
+        width: 2rem;
+    }
+
+    &--active {
+        border-left: 7px solid $color-primary;
+    }
 
 }

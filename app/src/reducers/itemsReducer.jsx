@@ -2,14 +2,14 @@ import { UPDATE_FILTER_ITEMS } from '../constants'
 
 const initItem = [
     {
-        name:"chocolat",
-        category:"dessert"
+        name:"Chocolat",
+        category:"Dessert"
     }, {
-        name:"pâte",
-        category:"féculent"
+        name:"Pâte",
+        category:"Féculent"
     }, {
-        name:"pizza",
-        category:"féculent"
+        name:"Pizza",
+        category:"Féculent"
     }
 ]
 

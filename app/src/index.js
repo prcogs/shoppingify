@@ -11,13 +11,15 @@ import thunk from 'redux-thunk'
 import itemsReducer from './reducers/itemsReducer'
 import filterNavBarReducer from './reducers/filterNavBarReducer'
 import filterItemsReduceur  from './reducers/filterItemsReduceur';
+import activeListReducer from './reducers/activeListReducer';
 
 
 const store = createStore(
   combineReducers({
     items : itemsReducer,
     filterItems : filterItemsReduceur,
-    filterNavBar : filterNavBarReducer
+    filterNavBar : filterNavBarReducer,
+    activeList : activeListReducer
   }), composeWithDevTools(
     applyMiddleware(thunk),
     // other store enhancers if any

@@ -1,24 +1,26 @@
 import { useSelector } from 'react-redux'
 
-import ItemsStore from '../items/items'
+import ItemStore from '../item/item'
 import HeaderItems from "../headerItems/headerItems"
 import { filteredItemsSelector } from '../../selectors/itemsSelector'
 
-
+import './itemsPage.scss'
 
 export const ItemsPage = ({ items }) => {
     
     return (
-        <div>
+        <div className="itemsPage">
             <HeaderItems/>
             {items.map((item, i) => {
                 return (
-                    <>  
-                        {item[0].category}
-                        {item.map((item, i) => {
-                            return <ItemsStore item={item} key={i}/>
-                        })}
-                    </>
+                    <div className="itemsPage__container">  
+                        <strong className="itemsPage__category">{item[0].category}</strong>
+                        <div className="itemsPage_items">
+                            {item.map((item, i) => {
+                                return <ItemStore item={item} key={i}/>
+                            })}
+                        </div>
+                    </div>
                 )
             })}
         </div>

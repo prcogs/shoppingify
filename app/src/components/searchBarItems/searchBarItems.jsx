@@ -3,12 +3,18 @@ import { useDispatch } from "react-redux"
 
 import { filterItems } from '../../actions/filterItemsAction'
 
-
+import "./searchBarItems.scss"
 
 export const SearchBarItems = ({ filterItem }) => {
     return (
-        <div>
-            <input type="text" onChange={(e) => {filterItem(e.target.value)}}></input>
+        <div className="searchBarItems">
+            <label htmlFor="search items" className="searchBarItems__label"><i className="fa fa-search" aria-hidden="true"></i></label>
+            <input type="text"
+                   name="search items"
+                   placeholder="search items" 
+                   onChange={(e) => {filterItem(e.target.value)}} 
+                   className="searchBarItems__input">
+            </input>
         </div>
     )
 }

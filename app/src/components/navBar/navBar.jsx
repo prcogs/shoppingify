@@ -7,13 +7,13 @@ import './navBar.scss'
 
 
 const NavBar = ({value, onChange}) => {
-    return <div class="navBar">
+    return <div className="navBar">
         <ul>
-            <li onClick={() => {onChange("items")}}>
-                <strong style={{color: value === "items" ? "red" : ""}}>items</strong>
+            <li className={value === "items" ? "navBar--active" : ""} onClick={() => {onChange("items")}}>
+                <strong ><i className="fa fa-bars navBar__icon" aria-hidden="true"></i></strong>
             </li>
-            <li onClick={() => {onChange("historyList")}}>
-            <strong style={{color: value === "historyList" ? "red" : ""}}>historyList</strong>
+            <li className={value === "historyList" ? "navBar--active" : ""} onClick={() => {onChange("historyList")}}>
+            <strong ><i className="fa fa-repeat fa-flip-horizontal navBar__icon" aria-hidden="true"></i></strong>
             </li>
         </ul>
     </div>  
