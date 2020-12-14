@@ -1,5 +1,8 @@
-import { UPDATE_ACTIVE_LIST, CREATE_ACTIVE_LIST, ADD_ITEM_IN_LIST, CANCEL_ACTIVE_LIST } from '../constants'
-import getDate from '../lib/getData'
+import { ADD_ITEM_IN_LIST, 
+         CANCEL_ACTIVE_LIST,
+         CREATE_ACTIVE_LIST,
+         DETELE_ITEM_ACTIVE_LIST } from '../constants'
+import getDate from '../lib/getDate'
 
 const initState = {
     pseudo : "",
@@ -12,18 +15,6 @@ const initState = {
 
 const activeListReducer = (state = initState, action) => {
     switch(action.type) {
-        case CREATE_ACTIVE_LIST:
-            return {    
-                pseudo: "test",
-                date: getDate(),
-                name : action.payload,
-                completed : false,
-                items : state.items 
-            }
-
-        case UPDATE_ACTIVE_LIST:
-            return [...state, {"name": action.payload, "number": action.payload.number}]
-
         case ADD_ITEM_IN_LIST:
             const itemIsInList = state.items.filter(item => item.name  === action.payload.name)
 
@@ -38,6 +29,23 @@ const activeListReducer = (state = initState, action) => {
               }
         case CANCEL_ACTIVE_LIST:
             return {...state, items : []}
+        
+        case CREATE_ACTIVE_LIST:
+
+              return state
+            
+            // return {    
+            //     pseudo: sessionStorage.getItem('pseudo'),
+            //     date: getDate(),
+            //     name : action.payload,
+            //     completed : false,
+            //     items : state.items 
+            // }
+
+        case DETELE_ITEM_ACTIVE_LIST:
+            const filter = state.items.filter(item => item.name !== action.payload)
+            console.log(filter)
+            return {...state, items : [...filter]}
 
         default:
             return state
@@ -45,16 +53,3 @@ const activeListReducer = (state = initState, action) => {
 }
 
 export default activeListReducer
-
-
-// const isItemInList = state.filter(item => item.name === action.payload.name)
-
-//             if(isItemInList.length !== 0) {
-//                 const newItem = {...action.payload, number: isItemInList[0].number++}
-//                 console.log(isItemInList[0].number++)
-//                 const filterItem = state.filter(item => item.name != action.payload.name)
-//                 console.log(filterItem)
-//                 return [...filterItem, newItem]
-//             } else {
-//                 return [...state, action.payload]
-//             }

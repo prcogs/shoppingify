@@ -1,6 +1,8 @@
 import { createSelector } from 'reselect'
+import sortAlphabeticalOrder from '../lib/sortAlphabeticalOrder'
 
 import { filterItemsSelector } from './filterItemsSelector'
+
 
 export const itemsSelector = ({items}) => items
 
@@ -9,10 +11,11 @@ export const filteredItemsSelector = createSelector(
     filterItemsSelector,
     ( items, filterItems ) => {
     //filtre les items via l'input filterItems
+    var filteredItems
     if(filterItems === null || filterItems === "" || filterItems === undefined) {
-        var filteredItems =  items
+        filteredItems =  items
     } else {
-        var filteredItems = items.filter( item => item.name.toLowerCase().substr(0, filterItems.length) === filterItems.toLowerCase() )             
+        filteredItems = items.filter( item => item.name.toLowerCase().substr(0, filterItems.length) === filterItems.toLowerCase() )             
     }
     
     // récupère toutes les catégories
@@ -31,6 +34,13 @@ export const filteredItemsSelector = createSelector(
         filterByCategories = [...filterByCategories, filter]
     }
 
-    return filterByCategories
+    // tri par ordre alphabéthique les items dans les catégories
+    var filterByCategoriesAndOrder = []
+    for(let i in filterByCategories) {
+        const order = filterByCategories[i].sort(sortAlphabeticalOrder)
+        filterByCategoriesAndOrder = [...filterByCategoriesAndOrder, order]
+    }
+
+    return filterByCategoriesAndOrder
 })
 

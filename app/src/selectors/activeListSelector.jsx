@@ -1,4 +1,4 @@
-
+import sortAlphabeticalOrder from '../lib/sortAlphabeticalOrder'
 
 export const activeListSelector = ({activeList}) => activeList
 
@@ -20,5 +20,12 @@ export const filteredItemsInActiveListSelector = ({activeList}) => {
         filterByCategories = [...filterByCategories, filter]
     }
 
-    return filterByCategories
+    // tri par ordre alphabéthique les items dans les catégories
+    var filterByCategoriesAndOrder = []
+    for(let i in filterByCategories) {
+        const order = filterByCategories[i].sort(sortAlphabeticalOrder)
+        filterByCategoriesAndOrder = [...filterByCategoriesAndOrder, order]
+    }
+
+    return filterByCategoriesAndOrder
 } 

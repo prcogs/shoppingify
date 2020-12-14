@@ -2,29 +2,86 @@
 
 .navBar {
     display: flex;
+    position: fixed;
     align-items: center;
-    width: 10vw;
+    width: 7.5vw;
+    height: 100vh;
 
     background-color: $color-background-nav;
 
-    ul {
-        width: 100%;
-        list-style: none;
-        padding: 0;
-        text-align: center;
+    @media (min-width:$screen-large-max) {
+        // width: 5vw;
+    }
 
-        li {
-            padding-top: 2rem;
-            padding-bottom: 2rem;;
-        }
+    &__container {
+        position: relative;
+    }
+
+    table {
+        width: calc(7.5vw - .1rem);
+
+        border-collapse:separate; 
+        border-spacing: 0 4em;
+    }
+
+    &__tr {
+        height: 3.3rem;
+    }
+
+    &__td {
+        width: 6rem;
+
+        cursor: pointer;
+        text-align: center;
     }
 
     &__icon {
-        width: 2rem;
+        font-size: 1.2rem;
     }
 
     &--active {
-        border-left: 7px solid $color-primary;
+        width: .1rem;
+
+        background-color: $color-primary;
+        border-radius: 0 5px 5px 0;
+    }
+
+    &__text {
+        position: absolute;
+        z-index: 3;
+
+        border-radius: 4px;
+        background: #454545;
+        color: $color-background-nav;
+        font-size:12px;
+        line-height: 20px;
+        padding-left: 10px;
+        padding-right: 10px;
+        
+        &:after {
+            right: 100%;
+            top: 50%;
+            border: solid transparent;
+            content: "";
+            height: 0;
+            width: 0;
+            position: absolute;
+            pointer-events: none;
+            border-color: rgba(69, 69, 69, 0);
+            border-right-color: #454545;
+            border-width: 3px;
+            margin-top: -3px;
+        }
+
+        &--items {
+            top: 69px;
+            left: 6.5vw;
+        }
+
+        &--history {
+            bottom: 70px;
+            left: 6.5vw;
+        }
     }
 
 }

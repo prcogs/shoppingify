@@ -20,7 +20,6 @@ const MainWrapper = ({filter}) => {
 
 const MainWrapperStore = () => {
     const filter = useSelector(filterNavBarSelector)
-
     return <MainWrapper filter={filter}/>
 }
 

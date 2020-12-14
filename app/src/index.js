@@ -8,10 +8,11 @@ import { Provider } from 'react-redux'
 import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk'
 
-import itemsReducer from './reducers/itemsReducer'
+import activeListReducer from './reducers/activeListReducer';
 import filterNavBarReducer from './reducers/filterNavBarReducer'
 import filterItemsReduceur  from './reducers/filterItemsReduceur';
-import activeListReducer from './reducers/activeListReducer';
+import infoItemReducer from './reducers/infoItemReducer';
+import itemsReducer from './reducers/itemsReducer'
 
 
 const store = createStore(
@@ -19,7 +20,8 @@ const store = createStore(
     items : itemsReducer,
     filterItems : filterItemsReduceur,
     filterNavBar : filterNavBarReducer,
-    activeList : activeListReducer
+    activeList : activeListReducer,
+    infoItem : infoItemReducer
   }), composeWithDevTools(
     applyMiddleware(thunk),
     // other store enhancers if any

@@ -26,10 +26,10 @@
     }
 
     &__allBtn {
-        position: absolute;
-        bottom: 5px;
+        // position: absolute;
+        // bottom: 5px;
 
-        width: 100%;
+        // width: 100%;
 
         text-align: center;
 
@@ -49,6 +49,7 @@
         }
 
         &--save {
+            color: $color-background-item;
             background-color: $color-primary;
             margin-left: .5rem;
         }

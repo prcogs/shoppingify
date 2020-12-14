@@ -7,6 +7,7 @@ import './App.scss';
 
 
 function App() {
+  sessionStorage.setItem('pseudo', "test");
   return (
       <div className="App">
         <NavBarStore />

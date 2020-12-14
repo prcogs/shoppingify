@@ -2,6 +2,13 @@
 
 
 .rigthWrapper {
-    width: 25vw;
+    position: fixed;
     background-color: $color-background-rigth;
+    margin-left: 75vw;
+    height: 100vh;
+
+    &__container {
+        position: relative;
+        width: 25vw;
+    }
 }
