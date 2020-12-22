@@ -4,12 +4,14 @@
 .activeList {
     height: 50%;
     box-sizing: border-box;
-    overflow-y: scroll;
     overflow-x: hidden;
-    scrollbar-color: #DCDCDC $color-background-rigth;
+    // scrollbar-color: #DCDCDC $color-background-rigth;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
 
     &::-webkit-scrollbar {
-        width: 12px;
+        // width: 0;
+        display: none;
     }
      
     &::-webkit-scrollbar-track {
@@ -91,5 +93,9 @@
         button:nth-child(4) {
             color:$color-primary
         }
+    }
+
+    &__checkbox {
+        
     }
 }

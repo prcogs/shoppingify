@@ -11,8 +11,9 @@ import thunk from 'redux-thunk'
 import activeListReducer from './reducers/activeListReducer';
 import filterNavBarReducer from './reducers/filterNavBarReducer'
 import filterItemsReduceur  from './reducers/filterItemsReduceur';
+import historyListReducer from './reducers/historyListReducer';
 import infoItemReducer from './reducers/infoItemReducer';
-import itemsReducer from './reducers/itemsReducer'
+import itemsReducer from './reducers/itemsReducer';
 
 
 const store = createStore(
@@ -21,7 +22,8 @@ const store = createStore(
     filterItems : filterItemsReduceur,
     filterNavBar : filterNavBarReducer,
     activeList : activeListReducer,
-    infoItem : infoItemReducer
+    infoItem : infoItemReducer,
+    historyList : historyListReducer
   }), composeWithDevTools(
     applyMiddleware(thunk),
     // other store enhancers if any

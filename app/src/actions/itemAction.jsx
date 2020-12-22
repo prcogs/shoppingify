@@ -9,6 +9,4 @@ export const getItem = () =>  async (dispatch) => {
         type: GET_ITEM,
         payload : resp
     })
-   
-    
 }

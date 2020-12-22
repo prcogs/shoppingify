@@ -1,7 +1,14 @@
-
+// @import './main.scss';
 
 
 button {
     border:none;
     cursor: pointer;
+
+    &:disabled,
+    &[disabled] {
+        background-color: transparent;
+        outline: none;
+        cursor: auto;
+    }
 }

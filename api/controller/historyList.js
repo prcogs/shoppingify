@@ -11,18 +11,19 @@ exports.getList = (req, res, next) => {
 exports.addList = (req, res, next) => {
   HistoryList.findOne({ pseudo : req.body.pseudo })
     .then(list => {
+      // vérifie si le nom de la liste n'est pas déjà présente 
       var data = list.lists
       var filterList = data.filter(item => item.name === req.body.lists.name)
       
       if( filterList.length > 0) {
-        res.status(201).json({ message: false})
-      }
-
-      else {
+        res.status(201).json({ message: "Nom de liste déjà utilisé",
+                               succes: false})
+      } else {
         const newList = [...data, req.body.lists]
 
         HistoryList.updateOne({ pseudo : req.body.pseudo }, {lists : newList })
-          .then(() => res.status(201).json({ message: 'Objet enregistré !'}))
+          .then(() => res.status(201).json({ message: 'Liste enregistré !',
+                                             succes: true}))
           .catch(error => res.status(400).json({ error }));
       }
     })
@@ -42,13 +43,14 @@ exports.changeList = (req, res, next) => {
   
         else {
           var filterList = data.filter(item => item.name !== req.body.lists.name)
-          console.log(filterList)
+          // console.log(filterList)
         }
    
         const newList = [...filterList, req.body.lists]
-        
+        console.log(newList)
         HistoryList.updateOne({ pseudo : req.body.pseudo }, {lists : newList })
-          .then(() => res.status(201).json({ message: 'Objet enregistré !'}))
+          .then(() => res.status(201).json({ message: 'Liste enregistré !',
+                                             succes: true}))
         //   .catch(error => res.status(400).json({ error }));
   
       })

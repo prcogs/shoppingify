@@ -20,7 +20,7 @@ export const ItemsPage = ({ items, loading }) => {
                         <strong className="itemsPage__category">{item[0].category}</strong>
                         <div className="itemsPage_items">
                             {item.map((item, i) => {
-                                return <ItemStore item={item} key={i}/>
+                                return <ItemStore item={item} view="itemsPage" key={i}/>
                             })}
                         </div>
                     </div>
@@ -34,7 +34,7 @@ const ItemsPageStore = () => {
     const [loading, isLoading] = useState(true)
 
     const items = useSelector(filteredItemsSelector)
-    
+
     const dispatch = useDispatch()
 
     useEffect(async () => {

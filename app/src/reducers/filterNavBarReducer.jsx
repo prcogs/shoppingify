@@ -8,7 +8,6 @@ const filterNavBarReducer = (state = "items", action) => {
         default:
             return state
     }
-     
 }
 
 export default filterNavBarReducer

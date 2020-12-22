@@ -11,12 +11,12 @@ export const filteredItemsInActiveListSelector = ({activeList}) => {
     }
 
     // ne garde que les catégories unique
-    const uniqueCategory = [...new Set (category)]
+    const uniqueCategoryOrder = [...new Set (category)].sort(sortAlphabeticalOrder)
 
     // regroupe les items par catégories
     var filterByCategories = []
-    for (let i in uniqueCategory) {
-        const filter = items.filter(item => item.category === uniqueCategory[i] )
+    for (let i in uniqueCategoryOrder) {
+        const filter = items.filter(item => item.category === uniqueCategoryOrder[i] )
         filterByCategories = [...filterByCategories, filter]
     }
 

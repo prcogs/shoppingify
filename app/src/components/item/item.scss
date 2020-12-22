@@ -3,15 +3,12 @@
 .item {
     display: inline-block;
     position: relative;
-    width: 11rem;
+    width: 14rem;
 
     margin-right: 60px;
     margin-bottom: 20px;
 
-
-    &__container {
-        width: 11rem;
-    
+    &__container {    
         cursor: pointer;
         background-color: $color-background-item;
         border-radius: 12px;
@@ -20,24 +17,34 @@
         padding: 15px;
     }
 
-  
-
-    &__btn {
+    &__rigthSide {
         position: absolute;
-        right:-20px;
-        top: 11px;
+        right:5px;
 
-        background-color: $color-background-item;
+        width: 30px;
+        height: 30px;
         padding: 7px;
+        
+        &--btn {
+            top: 11px;
+            background-color: $color-background-item;
 
-        &--color {
-            color:$color-backdrop;
+            &:hover {
+                background-color: rgba($color: $color-backdrop, $alpha: .3);
+                border-radius: 50%;
+            }
+
+            &--color {
+                color:$color-backdrop;
+            }
         }
 
-        &:hover {
-            border: 1px solid $color-backdrop;
-            // border-radius: 50%;
+        &--pcs {
+            top:0;
+
+            color: $color-primary;
+            font-size: 12px;
+            font-weight: 700;
         }
     }
-
 }

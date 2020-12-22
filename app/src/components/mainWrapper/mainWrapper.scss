@@ -2,11 +2,12 @@
 
 
 .mainWrapper {
-    width: calc(67.5vw - 10rem);
+    width: calc(67.5vw - 6rem);
+    min-height: 100vh;
     background-color: $color-background-main;
     margin-left: 7.5vw;
-    padding-left: 5rem;
-    padding-right: 5rem;
+    padding-left: 3rem;
+    padding-right: 3rem;
 
     @media (min-width:$screen-large-max) {
         // width: calc(65vw - 20rem);

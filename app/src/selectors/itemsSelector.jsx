@@ -18,6 +18,7 @@ export const filteredItemsSelector = createSelector(
         filteredItems = items.filter( item => item.name.toLowerCase().substr(0, filterItems.length) === filterItems.toLowerCase() )             
     }
     
+    // tri par catégori
     // récupère toutes les catégories
     var category = []
     for(let i in filteredItems) {
@@ -25,12 +26,12 @@ export const filteredItemsSelector = createSelector(
     }
 
     // ne garde que les catégories unique
-    const uniqueCategory = [...new Set (category)]
+    const uniqueCategoryOrder = [...new Set (category)].sort(sortAlphabeticalOrder)
 
     // regroupe les items par catégories
     var filterByCategories = []
-    for (let i in uniqueCategory) {
-        const filter = filteredItems.filter(item => item.category === uniqueCategory[i] )
+    for (let i in uniqueCategoryOrder) {
+        const filter = filteredItems.filter(item => item.category === uniqueCategoryOrder[i] )
         filterByCategories = [...filterByCategories, filter]
     }
 
@@ -40,6 +41,7 @@ export const filteredItemsSelector = createSelector(
         const order = filterByCategories[i].sort(sortAlphabeticalOrder)
         filterByCategoriesAndOrder = [...filterByCategoriesAndOrder, order]
     }
+
 
     return filterByCategoriesAndOrder
 })
