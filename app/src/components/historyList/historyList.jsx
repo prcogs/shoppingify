@@ -21,7 +21,7 @@ export const HistoryList = ({ lists, loading }) => {
 
 const HistoryListStore = () => {
     const lists = useSelector(filteredHistoryList)
-    const activeList = useSelector(activeListSelector)
+    // const activeList = useSelector(activeListSelector)
     const [loading, isLoading] = useState(true)
 
     const dispatch = useDispatch()
@@ -30,7 +30,7 @@ const HistoryListStore = () => {
         isLoading(true)
         await dispatch(getHistoryList())
         isLoading(false)
-    },[activeList.update])
+    },[])
 
 
     return <HistoryList lists={lists} loading={loading}/>

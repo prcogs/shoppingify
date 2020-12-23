@@ -22,9 +22,11 @@ exports.addList = (req, res, next) => {
         const newList = [...data, req.body.lists]
 
         HistoryList.updateOne({ pseudo : req.body.pseudo }, {lists : newList })
-          .then(() => res.status(201).json({ message: 'Liste enregistré !',
+          .then(() => res.status(201).json({ message: 'List saved !',
                                              succes: true}))
-          .catch(error => res.status(400).json({ error }));
+          .catch(error => res.status(400).json({ error,
+                                                 message : 'Problem in the matrix',
+                                                 succes: false }));
       }
     })
 }
@@ -43,18 +45,17 @@ exports.changeList = (req, res, next) => {
   
         else {
           var filterList = data.filter(item => item.name !== req.body.lists.name)
-          // console.log(filterList)
         }
    
         const newList = [...filterList, req.body.lists]
-        console.log(newList)
+        
         HistoryList.updateOne({ pseudo : req.body.pseudo }, {lists : newList })
-          .then(() => res.status(201).json({ message: 'Liste enregistré !',
+          .then(() => res.status(201).json({ message: 'List modify !',
                                              succes: true}))
-        //   .catch(error => res.status(400).json({ error }));
-  
       })
-      .catch(error => res.status(400).json({ error }));
+      .catch(error => res.status(400).json({ error,
+                                             message : 'Problem in the matrix',
+                                             succes: false }));
 }
 
 exports.deleteList = (req, res, next) => {
@@ -65,7 +66,10 @@ exports.deleteList = (req, res, next) => {
       const newList = [...filterList]
 
       HistoryList.updateOne({ pseudo : req.body.pseudo }, {lists : newList })
-          .then(() => res.status(201).json({ message: 'List supprimé !'}))
-        //   .catch(error => res.status(400).json({ error }));
+          .then(() => res.status(201).json({ message: 'List delete !',
+                                             succes: true}))
     })
+    .catch(error => res.status(400).json({ error,
+                                           message : 'Problem in the matrix',
+                                           succes: false }));
 }

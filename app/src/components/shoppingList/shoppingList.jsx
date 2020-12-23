@@ -9,6 +9,7 @@ import svg from '../../images/undraw_shopping_app_flsj 1.svg'
 
 
 import './shoppingList.scss'
+import { getHistoryList } from "../../actions/historyListAction"
 
 
 export const ShoppingList = ({ save, nameList, handleName, items, cancelList, updateList, loading, activeList, check, changeCheck }) => {
@@ -102,6 +103,7 @@ const ShoppingListStore = () => {
     const updateList =useCallback(async (activeList) => {
         setLoading(true)
         await dispatch(updateActiveList(activeList))
+        await dispatch(getHistoryList())
         setLoading(false)
     },[])
 

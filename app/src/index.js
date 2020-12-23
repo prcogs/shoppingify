@@ -14,6 +14,7 @@ import filterItemsReduceur  from './reducers/filterItemsReduceur';
 import historyListReducer from './reducers/historyListReducer';
 import infoItemReducer from './reducers/infoItemReducer';
 import itemsReducer from './reducers/itemsReducer';
+import addItemFormReducer from './reducers/addItemFormReducer';
 
 
 const store = createStore(
@@ -23,7 +24,8 @@ const store = createStore(
     filterNavBar : filterNavBarReducer,
     activeList : activeListReducer,
     infoItem : infoItemReducer,
-    historyList : historyListReducer
+    historyList : historyListReducer,
+    addItemForm : addItemFormReducer
   }), composeWithDevTools(
     applyMiddleware(thunk),
     // other store enhancers if any

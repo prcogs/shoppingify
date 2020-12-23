@@ -26,3 +26,6 @@ export const GET_HISTORY_LIST = "GET_HISTORY_LIST"
 // affiche / enleve infoItem
 export const CHANGE_STATE_INFO_ITEM = "CHANGE_STATE_INFO_ITEM"
 
+// affiche / enleve additemWrapepr
+export const CHANGE_STATE_ADD_ITEM_FORM = "CHANGE_STATE_ADD_ITEM_FORM"
+

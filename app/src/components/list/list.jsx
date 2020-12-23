@@ -1,6 +1,7 @@
 import { useCallback, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { deleteList, updateInActiveList } from '../../actions/activeListAction'
+import { getHistoryList } from '../../actions/historyListAction'
 import reverseFilterItems from '../../lib/reverseFilterItems'
 import ItemStore from '../item/item'
 
@@ -52,8 +53,9 @@ const ListStore = ({ list }) => {
         dispatch(updateInActiveList(list))
     })
 
-    const deleteOneHistoryList = useCallback((name) => {
-        dispatch(deleteList(name))
+    const deleteOneHistoryList = useCallback(async (name) => {
+        await dispatch(deleteList(name))
+        await dispatch(getHistoryList())    
     })
 
     return <List list={list} 

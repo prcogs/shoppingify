@@ -11,8 +11,8 @@ import { ADD_ITEM_IN_LIST,
          CHANGE_ALL_CHECK_ACTIVE_LIST} from '../constants'
 
 const initState = {
-    // messageAPI : "",
-    // succes : null,
+    messageAPI : "",
+    succes : "",
     pseudo : "",
     name : "",
     date : "",
@@ -51,6 +51,8 @@ const activeListReducer = (state = initState, action) => {
         
         case CANCEL_ACTIVE_LIST:
           return {
+            messageAPI : "",
+            succes : "",
             pseudo : "",
             name : "",
             date : "",
@@ -76,25 +78,24 @@ const activeListReducer = (state = initState, action) => {
                 return {messageAPI :action.payload.message, succes : action.payload.succes, ...state}
               }
 
-              
-            
-            // return {    
-            //     pseudo: sessionStorage.getItem('pseudo'),
-            //     date: getDate(),
-            //     name : action.payload,
-            //     completed : false,
-            //     items : state.items 
-            // }
-
         case DETELE_ITEM_ACTIVE_LIST:
             const filter = state.items.filter(item => item.name !== action.payload)
             return {...state, items : [...filter]}
             
         case DELETE_ACTIVE_LIST:
-          return state
+          if(action.payload.succes) {
+            return {
+              messageAPI : action.payload.message,
+              succes : action.payload.succes,
+              ...state
+          }
+
+          } else {
+            return {messageAPI :action.payload.message, succes : action.payload.succes, ...state}
+          }
 
         case REMOVE_MESSAGE_API_ACTIVE_LIST:
-          return initState
+          return {...state, messageAPI :"", succes: ""}
 
         case REMOVE_ONE_PIECE_ITEM:
           if(action.payload.number === 1) {
