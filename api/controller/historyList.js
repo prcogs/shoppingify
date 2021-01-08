@@ -1,5 +1,5 @@
 const HistoryList = require('../models/histroryList')
-
+const { check } = require('express-validator');
 
 
 exports.getList = (req, res, next) => {

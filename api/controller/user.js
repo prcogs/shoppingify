@@ -1,15 +1,27 @@
 const User = require('../models/user')
+const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken');
+const histroryList = require('../models/histroryList');
 
 exports.signup = (req, res, next) => {
     bcrypt.hash(req.body.password, 10)
       .then(hash => {
         const user = new User({
-          email: req.body.email,
+          pseudo: req.body.pseudo,
           password: hash
         });
         user.save()
-          .then(() => res.status(201).json({ message: 'Utilisateur créé !' }))
+          .then(() =>{
+            User.findOne({ pseudo : req.body.pseudo}).then(user => {
+              const history = new histroryList({
+                pseudo: user._id,
+                lists:[]
+              })
+              history.save()
+            })
+
+            res.status(201).json({ message: 'Utilisateur créé !' })
+          })
           .catch(error => res.status(400).json({ error }));
       })
       .catch(error => res.status(500).json({ error }));

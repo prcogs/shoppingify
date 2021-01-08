@@ -21,7 +21,8 @@ export const ShoppingList = ({ save, nameList, handleName, items, cancelList, up
                    value={nameList} 
                    onChange={(e) => handleName(e.target.value) }
                    className="shoppingList__input"
-                   disabled={activeList.update}/>
+                   disabled={activeList.update}
+                   maxLength="20"/>
 
             {activeList.update && <label className="control control-checkbox shoppingList__checkbox--completed">
                                     <input type="checkbox" checked={check} onChange={() => { changeCheck(!check)}}/>

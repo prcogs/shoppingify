@@ -18,7 +18,11 @@ import { GET_HISTORY_LIST } from '../constants'
 const historyListReducer = (state = [], action) => {
     switch(action.type) {
         case GET_HISTORY_LIST:
-            return action.payload 
+            if(action.payload === null) {
+                return []
+            } else {
+                return action.payload 
+            }
         default:
             return state
     }

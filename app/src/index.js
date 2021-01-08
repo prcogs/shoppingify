@@ -15,17 +15,19 @@ import historyListReducer from './reducers/historyListReducer';
 import infoItemReducer from './reducers/infoItemReducer';
 import itemsReducer from './reducers/itemsReducer';
 import addItemFormReducer from './reducers/addItemFormReducer';
+import authReducer from './reducers/authReducer';
 
 
 const store = createStore(
   combineReducers({
-    items : itemsReducer,
+    activeList : activeListReducer,
+    addItemForm : addItemFormReducer,
+    auth : authReducer,
     filterItems : filterItemsReduceur,
     filterNavBar : filterNavBarReducer,
-    activeList : activeListReducer,
-    infoItem : infoItemReducer,
     historyList : historyListReducer,
-    addItemForm : addItemFormReducer
+    infoItem : infoItemReducer,
+    items : itemsReducer
   }), composeWithDevTools(
     applyMiddleware(thunk),
     // other store enhancers if any

@@ -29,3 +29,8 @@ export const CHANGE_STATE_INFO_ITEM = "CHANGE_STATE_INFO_ITEM"
 // affiche / enleve additemWrapepr
 export const CHANGE_STATE_ADD_ITEM_FORM = "CHANGE_STATE_ADD_ITEM_FORM"
 
+// auth
+export const LOGIN_USER_AUTH = "LOGIN_USER_AUTH"
+export const DECONNECT_USER_AUTH = "DECONNECT_USER_AUTH"
+export const SIGNUP_USER_AUTH = "SIGNUP_USER_AUTH"
+

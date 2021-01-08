@@ -1,0 +1,130 @@
+@import "../../styles/main.scss";
+
+
+.authForm {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+
+    background-color: $color-background-main;
+    margin: 0;
+
+    &__container {
+        position: relative;
+        width: 16rem;
+        background-color: $color-background-item;
+        border: 1px solid $color-text;
+        border-radius:12px;
+        padding: 20px 60px 20px 60px;
+        font-size: 16px;
+    }
+
+    &__titleSite {
+        display: flex;
+        align-items: center;
+
+        img {
+            margin-right: 1rem;
+        }
+    }
+
+    &__pMsg {
+        // width: 100%;
+        background-color: #960909;
+        border-radius: 5px;
+        color:$color-background-item;
+        text-align: center;
+        line-height: 2rem;
+    }
+
+    &__pAuth {
+        font-size: 20px;
+        font-weight: 900;
+        margin-bottom: 1rem;
+        margin-top: 1rem;
+    }
+
+    label {
+        display: block;
+        margin-top: 1rem;
+        margin-bottom: .5rem;
+    }
+
+    label:nth-of-type(1) {
+        margin-top: 2rem;
+    }
+
+    input {
+        width: calc(100% - 30px);
+        height: 1.5rem;
+
+        // background-color: rgba($color: $color-backdrop, $alpha: 0.9);
+        border-radius: 5px;
+        border: 2px solid $color-backdrop;
+        font-family: 'Quicksand', sans-serif;
+        font-size: 16px;
+        font-weight: 300;
+        padding: 13px;
+    }
+
+    input:nth-of-type(2) {
+        width: calc(100% - 62px);
+        padding-right: 45px;
+    }
+
+    &__btnEyes {
+        position: absolute;
+        bottom: 214px;
+        right: 67px;
+        background-color: transparent;
+        font-size: 20px;
+
+        &--register {
+            bottom: 89px;
+        }
+    }
+
+    &__btnLogin {
+        width: 100%;
+
+        background-color: $color-primary;
+        border-radius: 5px;
+        color: $color-background-item;
+        font-size: 16px;
+        line-height: 2rem;
+        margin-top: 1.4rem;
+    }
+
+    &__pRegister,
+    &__pLazy {
+        text-align: center;
+        font-size: 15px;
+        width: 90%;
+        margin: auto;
+        margin-bottom: 1rem;
+    }
+
+    &__pRegister {
+        margin-top: 1rem;
+    }
+
+    em {
+        color:rgba($color: $color-primary, $alpha: .75);
+        cursor: pointer;
+    }
+
+    &__btnBack {
+        display: inline;
+        position: absolute;
+        top: 10px;
+        right: 10px;
+
+        background-color: transparent;
+        color: $color-primary;
+        font-family: 'Quicksand', sans-serif;
+        font-size: 16px;
+        font-weight: 700;
+    }
+    
+}

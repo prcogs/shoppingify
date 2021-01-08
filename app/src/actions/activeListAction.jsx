@@ -135,7 +135,7 @@ export const updateActiveList = (activeList) => async (dispatch) => {
                                                                         })
                                                                 })
     const resp = await res.json()
-
+    
     dispatch({
         type: UPDATE_ACTIVE_LIST,
         payload : resp

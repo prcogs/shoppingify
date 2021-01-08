@@ -2,6 +2,8 @@
 
 .navBar {
     display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     position: fixed;
     align-items: center;
     width: 7.5vw;
@@ -11,6 +13,14 @@
 
     @media (min-width:$screen-large-max) {
         // width: 5vw;
+    }
+
+    img {
+        cursor: pointer;
+    }
+
+    &__icoSite {
+        margin-top: 2rem;
     }
 
     &__container {
@@ -82,6 +92,18 @@
             bottom: 70px;
             left: 6.5vw;
         }
+    }
+
+    &__icoShop {
+        display: block;
+        width: 50px;
+        height: 50px;
+        background-color: $color-primary;
+        border-radius: 50%;
+        color: $color-background-item;
+        font-size: 20px;
+        margin-bottom: 2rem;
+        padding: 10px;
     }
 
 }

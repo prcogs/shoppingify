@@ -2,14 +2,16 @@ import { useCallback, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { updateFilter } from "../../actions/filterNavBarActions"
 import { filterNavBarSelector } from "../../selectors/filterNavBarSelector"
+import svg from '../../images/logo.svg'
 
 import './navBar.scss'
+import { deconnect } from "../../actions/authAction"
 
 
-const NavBar = ({value, isShownItems, isShownHistory, onChange, changeShownItems, changeShownHistory}) => {
+const NavBar = ({value, isShownItems, isShownHistory, onChange, changeShownItems, changeShownHistory, deconnectUser}) => {
     return (
         <div className="navBar">
-             
+            <img className="navBar__icoSite" src={svg} alt="Logo shoppingify" onClick={() => {deconnectUser()}} title="Logout"/>            
              <div className="navBar__container">
              {isShownItems && (
                             <p className="navBar__text--items navBar__text">Items</p>
@@ -42,6 +44,7 @@ const NavBar = ({value, isShownItems, isShownHistory, onChange, changeShownItems
                             <p className="navBar__text--history navBar__text">History</p>
                         )}
             </div>
+            <button className="navBar__icoShop"><i className="fa fa-shopping-cart" aria-hidden="true"></i></button>
         </div> 
     ) 
 }
@@ -64,13 +67,18 @@ const NavBarStore = () => {
         dispatch(updateFilter(value))
     },[])
 
+    const deconnectUser = useCallback(() => {
+        dispatch(deconnect())
+    })
+
 
     return <NavBar value={value} 
                    isShownItems={isShownItems}
                    isShownHistory={isShownHistory} 
                    onChange={onChange}
                    changeShownHistory={changeShownHistory} 
-                   changeShownItems={changeShownItems}/>
+                   changeShownItems={changeShownItems}
+                   deconnectUser={deconnectUser}/>
 }
 
 export default NavBarStore 

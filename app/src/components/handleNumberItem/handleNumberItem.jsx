@@ -20,7 +20,7 @@ const HandleNumberItem = ({ item, addItem, deleteItem, removeOnePiece }) => {
             <div className="activeList__btns" onMouseLeave={() => {changeView(true)}}>
                 <button onClick={() => deleteItem(item.name)}><i className="fa fa-trash-o" aria-hidden="true"></i></button>
                 <button onClick={() => removeOnePiece(item.name, item.number, item.check, item.category)}><i className="fa fa-minus" aria-hidden="true"></i></button>
-                <p className="activeList__number activeList__number--active">{item.number} pc{item.number > 1 ? "s" : "" }</p>
+                <p className="activeList__number activeList__number--active">{item.number} pc{item.number > 1 && "s"}</p>
                 <button onClick={() => addItem(item.name, item.category)}><i className="fa fa-plus" aria-hidden="true"></i></button>
             </div>
         )
