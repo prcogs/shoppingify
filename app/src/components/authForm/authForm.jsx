@@ -1,4 +1,4 @@
-import { useCallback, useRef, useState } from "react"
+import { useCallback, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { yupResolver } from '@hookform/resolvers/dist/yup';
 import { useForm } from "react-hook-form";
@@ -21,8 +21,6 @@ const AuthForm = ({ checkLogin, auth, changeViewAuth, loading }) => {
     const onSubmit = data => {
         checkLogin(data.pseudo, data.password)
     }
-
-    console.log(errors)
 
     return (
         <div className="authForm">

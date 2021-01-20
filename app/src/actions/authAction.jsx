@@ -24,7 +24,7 @@ export const login = (pseudo, password) => async (dispatch) => {
             type: LOGIN_USER_AUTH,
             payload : {
                         succes : false,
-                        resp : resp.error
+                        resp : resp.error || resp.errors
             }
         })
     } else {
@@ -54,7 +54,7 @@ export const signup = (pseudo, password) =>  async (dispatch) => {
         dispatch({
             type: SIGNUP_USER_AUTH,
             payload : {
-                message : resp.error._message,
+                message : resp.error._message || resp.errors,
                 succes : false
             }
         })

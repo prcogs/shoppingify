@@ -5,15 +5,18 @@
     display: flex;
     justify-content: flex-end;
     position: relative;
-    // media queries pr le width
-    width: 70%;
-    height: 8rem;
+    width: 80%;
+    max-width: 15rem;
+    height: 6rem;
 
     background-color: #80485B;
     border-radius: 24px;
     margin: auto;
-    // margin-top: 2rem;
-    margin-bottom: 2rem;
+    // margin-bottom: .5rem;
+
+    @media (max-width: $screen-large-max) {
+        
+    }
 
     &__container {
         width: 55%;
@@ -25,22 +28,24 @@
         position: absolute;
         bottom: 10px;
         left: 10px;
+
+        height: 7rem;
     }
 
     p {
         color:$color-background-item;
-        font-size: 16px;
+        font-size: 13px;
         font-weight: 700;
     }
 
     button {
-        width: 100px;
-        height: 36px;
+        width: 6rem;
+        height: 2rem;
 
         background-color: $color-background-item;
         border-radius: 12px;
         font-family:'Quicksand', sans-serif; ;
-        font-size: 14px;
+        font-size: 12px;
         font-weight: 700;
     }
 }

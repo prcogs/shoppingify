@@ -8,7 +8,7 @@ import './navBar.scss'
 import { deconnect } from "../../actions/authAction"
 
 
-const NavBar = ({value, isShownItems, isShownHistory, onChange, changeShownItems, changeShownHistory, deconnectUser}) => {
+const NavBar = ({value, isShownItems, isShownHistory, onChange, changeShownItems, changeShownHistory, deconnectUser, handleViewRigthWrapperMobile}) => {
     return (
         <div className="navBar">
             <img className="navBar__icoSite" src={svg} alt="Logo shoppingify" onClick={() => {deconnectUser()}} title="Logout"/>            
@@ -44,12 +44,12 @@ const NavBar = ({value, isShownItems, isShownHistory, onChange, changeShownItems
                             <p className="navBar__text--history navBar__text">History</p>
                         )}
             </div>
-            <button className="navBar__icoShop"><i className="fa fa-shopping-cart" aria-hidden="true"></i></button>
+            <button className="navBar__icoShop" onClick={ () => {handleViewRigthWrapperMobile()}}><i className="fa fa-shopping-cart" aria-hidden="true"></i></button>
         </div> 
     ) 
 }
 
-const NavBarStore = () => {
+const NavBarStore = ({ handleViewRigthWrapperMobile }) => {
     const [isShownItems, setIsShownItems] = useState(false);
     const [isShownHistory, setIsShownHistory] = useState(false);
 
@@ -71,14 +71,14 @@ const NavBarStore = () => {
         dispatch(deconnect())
     })
 
-
     return <NavBar value={value} 
                    isShownItems={isShownItems}
                    isShownHistory={isShownHistory} 
                    onChange={onChange}
                    changeShownHistory={changeShownHistory} 
                    changeShownItems={changeShownItems}
-                   deconnectUser={deconnectUser}/>
+                   deconnectUser={deconnectUser}
+                   handleViewRigthWrapperMobile={handleViewRigthWrapperMobile}/>
 }
 
 export default NavBarStore 

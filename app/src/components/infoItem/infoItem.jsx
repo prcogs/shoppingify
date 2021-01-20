@@ -9,7 +9,7 @@ import './infoItem.scss'
 
 export const InfoItem = ( { infoItem, disableInfoItem, addItem }) => {
     return (
-        <div className={infoItem.active ? " infoItem infoItem--active" : "infoItem--disable"}>
+        <div className={infoItem.active ? " infoItem infoItem--active slideLeft" : "infoItem--disable slideRight"}>
             <div className="infoItem__container">
                 <button onClick={() => {disableInfoItem(false, {})}}><i className="fa fa-long-arrow-left" aria-hidden="true"></i> back</button>
                 <img src={`../../images/${infoItem.item.image}`} alt={infoItem.item.name}/>

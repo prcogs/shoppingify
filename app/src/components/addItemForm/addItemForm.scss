@@ -65,32 +65,40 @@
 
     &__select {
         width: 100%;
-        border: 2px solid gray;
+
+        // border: 2px solid gray;
         border-radius: 12px;
+        margin-top: 5px;
         padding: 10px;
     }
 
     &__btn {
-        display: block;
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: center;
+
         margin-top: 1rem;
         margin-bottom: 2rem;
-        text-align: center;
     }
 
     button {
         font-family:  'Quicksand', sans-serif;
     }
 
-    button:nth-of-type(1) {
+    button:nth-of-type(2) {
         background-color: transparent;
         color:$color-text;
         font-size: 16px;
         font-weight: 700;
         line-height: 50px;
         margin-right: .5rem;
+
+        @media (max-width:$screen-large-max) {
+            margin-right: 0;
+        }
     }
 
-    button:nth-of-type(2) {
+    button:nth-of-type(1) {
         background-color: $color-primary;
         border-radius: 12px;
         color: $color-background-item;

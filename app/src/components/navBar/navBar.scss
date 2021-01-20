@@ -6,13 +6,17 @@
     justify-content: space-between;
     position: fixed;
     align-items: center;
-    width: 7.5vw;
+    width: 5.5vw;
     height: 100vh;
 
     background-color: $color-background-nav;
 
-    @media (min-width:$screen-large-max) {
-        // width: 5vw;
+    @media (max-width: $screen-large-max) {
+        width: 7vw;
+    }
+
+    @media (max-width:$screen-large-medium) {
+        width: 15vw;
     }
 
     img {
@@ -28,10 +32,18 @@
     }
 
     table {
-        width: calc(7.5vw - .1rem);
+        width: calc(5.5vw - .1rem);
 
         border-collapse:separate; 
         border-spacing: 0 4em;
+
+        @media (max-width: $screen-large-max) {
+            width: calc(7vw - .1rem);
+        }
+
+        @media (max-width:$screen-large-medium) {
+            width: calc(15vw - .1rem);
+        }
     }
 
     &__tr {
@@ -58,7 +70,6 @@
 
     &__text {
         position: absolute;
-        z-index: 3;
 
         border-radius: 4px;
         background: #454545;
@@ -77,6 +88,7 @@
             width: 0;
             position: absolute;
             pointer-events: none;
+
             border-color: rgba(69, 69, 69, 0);
             border-right-color: #454545;
             border-width: 3px;
@@ -96,12 +108,12 @@
 
     &__icoShop {
         display: block;
-        width: 50px;
-        height: 50px;
+        width: 40px;
+        height: 40px;
         background-color: $color-primary;
         border-radius: 50%;
         color: $color-background-item;
-        font-size: 20px;
+        font-size: 15px;
         margin-bottom: 2rem;
         padding: 10px;
     }

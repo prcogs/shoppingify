@@ -1,5 +1,5 @@
 const HistoryList = require('../models/histroryList')
-const { check } = require('express-validator');
+const sanitizer = require('sanitizer');
 
 
 exports.getList = (req, res, next) => {
@@ -13,23 +13,33 @@ exports.addList = (req, res, next) => {
     .then(list => {
       // vérifie si le nom de la liste n'est pas déjà présente 
       var data = list.lists
-      var filterList = data.filter(item => item.name === req.body.lists.name)
+
+      var reqSanitaze = {
+                    lists: {
+                        name: sanitizer.escape(req.body.lists.name), 
+                        date: req.body.lists.date,
+                        completed: req.body.lists.completed,
+                        items : req.body.lists.items
+                    }
+              }
+      var filterList = data.filter(item => item.name === reqSanitaze.lists.name)
       
       if( filterList.length > 0) {
         res.status(201).json({ message: "Nom de liste déjà utilisé",
-                               succes: false})
+                              succes: false})
       } else {
-        const newList = [...data, req.body.lists]
+        const newList = [...data, reqSanitaze.lists]
 
         HistoryList.updateOne({ pseudo : req.body.pseudo }, {lists : newList })
           .then(() => res.status(201).json({ message: 'List saved !',
-                                             succes: true}))
+                                            succes: true}))
           .catch(error => res.status(400).json({ error,
-                                                 message : 'Problem in the matrix',
-                                                 succes: false }));
-      }
-    })
+                                                message : 'Problem in the matrix',
+                                                succes: false }));
+    }
+  })
 }
+  
 
 exports.changeList = (req, res, next) => {
   

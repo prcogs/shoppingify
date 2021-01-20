@@ -2,23 +2,31 @@
 
 .item {
     display: inline-block;
-    position: relative;
     width: 14rem;
 
     margin-right: 60px;
     margin-bottom: 20px;
 
-    &__container {    
+    
+
+    &__container {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+
         cursor: pointer;
         background-color: $color-background-item;
         border-radius: 12px;
         font-size: 16px;
         font-weight: 500;
         padding: 15px;
+
+        &:hover {
+            box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.2)
+        }
     }
 
     &__rigthSide {
-        position: absolute;
         right:5px;
 
         width: 30px;
@@ -40,11 +48,15 @@
         }
 
         &--pcs {
+            width: auto;
+            height: auto;
+            padding: 0;
             top:0;
 
             color: $color-primary;
             font-size: 12px;
             font-weight: 700;
+            margin: 0;
         }
     }
 }

@@ -7,10 +7,34 @@
     margin-left: 75vw;
     height: 100vh;
 
+    @media (max-width:$screen-large-max) {
+        
+        margin-left: 67vw;
+    }
+
+    @media (max-width:$screen-large-medium) {
+        &--none {
+            display: none;
+        }
+    }
+
+    @media (max-width:$screen-large-medium) {
+        margin-left: 15vw;
+    }
+
     &__container {
         position: relative;
         width: 25vw;
         padding-top: 2rem;
+
+        @media (max-width:$screen-large-max) {
+            width: 33vw;
+        }
+
+        @media (max-width:$screen-large-medium) {
+            width: 85vw;
+            margin-left: 0;
+        }
     }
 }
 

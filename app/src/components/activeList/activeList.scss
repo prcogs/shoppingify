@@ -2,7 +2,7 @@
 
 
 .activeList {
-    height: 50%;
+    height: 50vh;
     box-sizing: border-box;
     overflow-x: hidden;
     // scrollbar-color: #DCDCDC $color-background-rigth;
@@ -37,6 +37,10 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
+
+        @media (max-width:$screen-large-max) {
+            flex-wrap: wrap;
+        }
 
         p:nth-child(1) {
             font-size: 18px;

@@ -1,13 +1,15 @@
-import { useCallback, useRef, useState } from "react"
+import { useCallback, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
+import { yupResolver } from '@hookform/resolvers/dist/yup';
+import { useForm } from "react-hook-form";
 import Select from '@material-ui/core/Select';
-import MenuItem from '@material-ui/core/MenuItem';
 import InputLabel from '@material-ui/core/InputLabel';
 import FormControl from '@material-ui/core/FormControl';
 
 import { addItemInList } from "../../actions/activeListAction"
 import { changeStateAddItemForm } from "../../actions/addItemFormAction"
 import { addItemFormSelector } from "../../selectors/addItemFormSelector"
+import { schemaAddItem } from "../../lib/schemaForm";
 
 import './addItemForm.scss'
 
@@ -17,25 +19,35 @@ const AddItemForm = ({ addItemForm, disableAddItemForm, addItem }) => {
         setCategory(event.target.value);
     };
 
-    const name = useRef(null)
-    const note = useRef(null)
-    const image = useRef(null)
+    const { register, handleSubmit, errors } = useForm({
+        mode: "onTouched",
+        resolver: yupResolver(schemaAddItem)
+    })
+
+    const onSubmit = (data, e) => {
+        // e.preventDefault()
+        console.log(data.name, data.note, data.image, data.category)
+        addItem(data.name, data.note, data.image, data.category)
+    }
 
     return (
-        <div className={addItemForm.active ? "addItemForm addItemForm--active" : "addItemForm--disable"}>
-                <div className="addItemForm__container">
+        <form className={addItemForm.active ? "addItemForm addItemForm--active" : "addItemForm--disable"} onSubmit={handleSubmit(onSubmit)}>
+            <div className="addItemForm__container">
 
                 <p>Add a new item</p>
                 
                 <label htmlFor="name">Name</label><br/>
-                <input type="text" placeholder="Enter a name" ref={name}/>
+                {errors.name && <span className="inputErrors">{errors.name.message}</span>}
+                <input type="text" placeholder="Enter a name" name="name" ref={register}/>
 
                 <label htmlFor="note">Note (optional)</label><br/>
-                <textarea placeholder="Enter a note" ref={note}/>
+                {errors.note && <span className="inputErrors">{errors.note.message}</span>}
+                <textarea placeholder="Enter a note" name="note" ref={register}/>
 
                 <label htmlFor="image">Image (optional)</label><br/>
-                <input type="text" placeholder="Enter a url" ref={image}/>
+                <input type="text" placeholder="Enter a url" name="image" ref={register}/>
 
+                {errors.category && <span className="inputErrors inputErrors--category">{errors.category.message}</span>}
                 <FormControl variant="outlined" className="addItemForm__select">
                     <InputLabel htmlFor="outlined-age-native-simple">Category</InputLabel>
                     <Select
@@ -47,6 +59,8 @@ const AddItemForm = ({ addItemForm, disableAddItemForm, addItem }) => {
                             name: 'category',
                             id: 'outlined-age-native-simple',
                         }}
+                        inputRef={register}
+                        name="category"
                     >
                         <option aria-label="None" value="" />
                         <option value="Beverages">Beverages</option>
@@ -56,12 +70,11 @@ const AddItemForm = ({ addItemForm, disableAddItemForm, addItem }) => {
                 </FormControl>
 
                 <div className="addItemForm__btn">
-                    <button onClick={() => {disableAddItemForm(false)}}>cancel</button> 
-                    <button onClick={() => addItem(name.current.value, note.current.value, image.current.value, category)}>Add to list</button> 
+                    <button>Add to list</button>
+                    <button type="button" onClick={() => {disableAddItemForm(false)}}>cancel</button> 
                 </div>
-
             </div>
-        </div>
+        </form>
     )
 }
 
