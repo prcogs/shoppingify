@@ -27,7 +27,12 @@ function App() {
       </div>
     );
   } else {
-    return <AuthFormStore />
+    return (
+      <>
+        <AuthFormStore />
+        <p className="infoDev">Developed by Florian Fort <a href="https://github.com/prcogs" target="_blank">Precgs@GithHub</a> for a challenge offred by <a href="https://devchallenges.io/" target="_blank">DevChallenges</a></p>
+      </>
+    )
   }
   
 }
