@@ -1,0 +1,26 @@
+@import "../../styles/main.scss";
+
+
+.mainWrapper {
+    width: calc(69.5vw - 6rem);
+    min-height: 100vh;
+
+    background-color: $color-background-main;
+    margin-left: 5.5vw;
+    padding-left: 3rem;
+    padding-right: 3rem;
+
+    @media (max-width:$screen-large-max) {
+        width: calc(60vw - 3rem);
+        margin-left: 7vw;
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
+
+    @media (max-width:$screen-large-medium) {
+        width: calc(85vw - 1rem);
+        margin-left: 15vw;
+        padding-left: .5rem;
+        padding-right: .5rem;
+    }
+}

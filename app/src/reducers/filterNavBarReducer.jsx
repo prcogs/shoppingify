@@ -1,23 +1,13 @@
-const { SHOW_ITEMS, SHOW_HISTORY_LIST } = require("../constants");
-const initItem = [
-    {
-        name:"chocolat"
-    }, {
-        name:"sucre"
-    }
-]
+import { UPDATE_FILTER_NAV } from "../constants";
 
 
-const filterNavBarReducer = (state = SHOW_ITEMS, action) => {
-    switch(action.types) {
-        case SHOW_ITEMS:
-            return JSON.stringify(initItem)
-        case SHOW_HISTORY_LIST:
-            return "list"
+const filterNavBarReducer = (state = "items", action) => {
+    switch(action.type) {
+        case UPDATE_FILTER_NAV:
+            return action.payload
         default:
             return state
     }
-     
 }
 
 export default filterNavBarReducer

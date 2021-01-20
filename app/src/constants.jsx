@@ -1,5 +1,36 @@
+// item
+export const GET_ITEM = "GET_ITEM"
 
+// active list
+export const ADD_ITEM_IN_LIST = "ADD_ITEM_IN_LIST"
+export const CANCEL_ACTIVE_LIST = "CANCEL_ACTIVE_LIST"
+export const CHANGE_ALL_CHECK_ACTIVE_LIST = "CHANGE_ALL_CHECK_ACTIVE_LIST"
+export const CHANGE_CHECK_ITEM_ACTIVE_LIST = "CHANGE_CHECK_ITEM_ACTIVE_LIST"
+export const CREATE_ACTIVE_LIST = "CREATE_ACTIVE_LIST"
+export const DETELE_ITEM_ACTIVE_LIST = "DETELE_ITEM_ACTIVE_LIST"
+export const REMOVE_MESSAGE_API_ACTIVE_LIST = "REMOVE_MESSAGE_API_ACTIVE_LIST"
+export const DELETE_ACTIVE_LIST = "DELETE_ACTIVE_LIST"
+export const REMOVE_ONE_PIECE_ITEM = "REMOVE_ONE_PIECE_ITEM"
+export const UPDATE_IN_ACTIVE_LIST = "UPDATE_IN_ACTIVE_LIST"
+export const UPDATE_ACTIVE_LIST = "UPDATE_ACTIVE_LIST"
 
-export const SHOW_ITEMS = "SWHOW_ITEMS"
-export const SHOW_HISTORY_LIST = "SHOW_HISTORY_LIST"
+// filter nav reducer (items or historyList)
+export const UPDATE_FILTER_NAV = "UPDATE_FILTER_NAV"
+
+//filter items
+export const UPDATE_FILTER_ITEMS = "UPDATE_FILTER_ITEMS"
+
+// historyList
+export const GET_HISTORY_LIST = "GET_HISTORY_LIST"
+
+// affiche / enleve infoItem
+export const CHANGE_STATE_INFO_ITEM = "CHANGE_STATE_INFO_ITEM"
+
+// affiche / enleve additemWrapepr
+export const CHANGE_STATE_ADD_ITEM_FORM = "CHANGE_STATE_ADD_ITEM_FORM"
+
+// auth
+export const LOGIN_USER_AUTH = "LOGIN_USER_AUTH"
+export const DECONNECT_USER_AUTH = "DECONNECT_USER_AUTH"
+export const SIGNUP_USER_AUTH = "SIGNUP_USER_AUTH"
 

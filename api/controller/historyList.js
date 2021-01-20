@@ -1,5 +1,5 @@
 const HistoryList = require('../models/histroryList')
-
+const sanitizer = require('sanitizer');
 
 
 exports.getList = (req, res, next) => {
@@ -11,22 +11,35 @@ exports.getList = (req, res, next) => {
 exports.addList = (req, res, next) => {
   HistoryList.findOne({ pseudo : req.body.pseudo })
     .then(list => {
+      // vérifie si le nom de la liste n'est pas déjà présente 
       var data = list.lists
-      var filterList = data.filter(item => item.name === req.body.lists.name)
+
+      var reqSanitaze = {
+                    lists: {
+                        name: sanitizer.escape(req.body.lists.name), 
+                        date: req.body.lists.date,
+                        completed: req.body.lists.completed,
+                        items : req.body.lists.items
+                    }
+              }
+      var filterList = data.filter(item => item.name === reqSanitaze.lists.name)
       
       if( filterList.length > 0) {
-        res.status(201).json({ message: false})
-      }
-
-      else {
-        const newList = [...data, req.body.lists]
+        res.status(201).json({ message: "Nom de liste déjà utilisé",
+                              succes: false})
+      } else {
+        const newList = [...data, reqSanitaze.lists]
 
         HistoryList.updateOne({ pseudo : req.body.pseudo }, {lists : newList })
-          .then(() => res.status(201).json({ message: 'Objet enregistré !'}))
-          .catch(error => res.status(400).json({ error }));
-      }
-    })
+          .then(() => res.status(201).json({ message: 'List saved !',
+                                            succes: true}))
+          .catch(error => res.status(400).json({ error,
+                                                message : 'Problem in the matrix',
+                                                succes: false }));
+    }
+  })
 }
+  
 
 exports.changeList = (req, res, next) => {
   
@@ -42,17 +55,17 @@ exports.changeList = (req, res, next) => {
   
         else {
           var filterList = data.filter(item => item.name !== req.body.lists.name)
-          console.log(filterList)
         }
    
         const newList = [...filterList, req.body.lists]
         
         HistoryList.updateOne({ pseudo : req.body.pseudo }, {lists : newList })
-          .then(() => res.status(201).json({ message: 'Objet enregistré !'}))
-        //   .catch(error => res.status(400).json({ error }));
-  
+          .then(() => res.status(201).json({ message: 'List modify !',
+                                             succes: true}))
       })
-      .catch(error => res.status(400).json({ error }));
+      .catch(error => res.status(400).json({ error,
+                                             message : 'Problem in the matrix',
+                                             succes: false }));
 }
 
 exports.deleteList = (req, res, next) => {
@@ -63,7 +76,10 @@ exports.deleteList = (req, res, next) => {
       const newList = [...filterList]
 
       HistoryList.updateOne({ pseudo : req.body.pseudo }, {lists : newList })
-          .then(() => res.status(201).json({ message: 'List supprimé !'}))
-        //   .catch(error => res.status(400).json({ error }));
+          .then(() => res.status(201).json({ message: 'List delete !',
+                                             succes: true}))
     })
+    .catch(error => res.status(400).json({ error,
+                                           message : 'Problem in the matrix',
+                                           succes: false }));
 }

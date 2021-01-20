@@ -1,0 +1,121 @@
+@import "../../styles/main.scss";
+
+.navBar {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: fixed;
+    align-items: center;
+    width: 5.5vw;
+    height: 100vh;
+
+    background-color: $color-background-nav;
+
+    @media (max-width: $screen-large-max) {
+        width: 7vw;
+    }
+
+    @media (max-width:$screen-large-medium) {
+        width: 15vw;
+    }
+
+    img {
+        cursor: pointer;
+    }
+
+    &__icoSite {
+        margin-top: 2rem;
+    }
+
+    &__container {
+        position: relative;
+    }
+
+    table {
+        width: calc(5.5vw - .1rem);
+
+        border-collapse:separate; 
+        border-spacing: 0 4em;
+
+        @media (max-width: $screen-large-max) {
+            width: calc(7vw - .1rem);
+        }
+
+        @media (max-width:$screen-large-medium) {
+            width: calc(15vw - .1rem);
+        }
+    }
+
+    &__tr {
+        height: 3.3rem;
+    }
+
+    &__td {
+        width: 6rem;
+
+        cursor: pointer;
+        text-align: center;
+    }
+
+    &__icon {
+        font-size: 1.2rem;
+    }
+
+    &--active {
+        width: .1rem;
+
+        background-color: $color-primary;
+        border-radius: 0 5px 5px 0;
+    }
+
+    &__text {
+        position: absolute;
+
+        border-radius: 4px;
+        background: #454545;
+        color: $color-background-nav;
+        font-size:12px;
+        line-height: 20px;
+        padding-left: 10px;
+        padding-right: 10px;
+        
+        &:after {
+            right: 100%;
+            top: 50%;
+            border: solid transparent;
+            content: "";
+            height: 0;
+            width: 0;
+            position: absolute;
+            pointer-events: none;
+
+            border-color: rgba(69, 69, 69, 0);
+            border-right-color: #454545;
+            border-width: 3px;
+            margin-top: -3px;
+        }
+
+        &--items {
+            top: 69px;
+            left: 6.5vw;
+        }
+
+        &--history {
+            bottom: 70px;
+            left: 6.5vw;
+        }
+    }
+
+    &__icoShop {
+        display: block;
+        width: 40px;
+        height: 40px;
+        background-color: $color-primary;
+        border-radius: 50%;
+        color: $color-background-item;
+        font-size: 15px;
+        margin-bottom: 2rem;
+        padding: 10px;
+    }
+
+}

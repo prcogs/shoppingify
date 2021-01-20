@@ -1,30 +1,54 @@
 const User = require('../models/user')
+const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken');
+const histroryList = require('../models/histroryList');
+
+const { validationResult } = require('express-validator');
 
 exports.signup = (req, res, next) => {
+    const errors = validationResult(req)
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ errors: "User or password invalid" })
+    }
+
     bcrypt.hash(req.body.password, 10)
       .then(hash => {
         const user = new User({
-          email: req.body.email,
+          pseudo: req.body.pseudo,
           password: hash
         });
         user.save()
-          .then(() => res.status(201).json({ message: 'Utilisateur créé !' }))
+          .then(() =>{
+            User.findOne({ pseudo : req.body.pseudo}).then(user => {
+              const history = new histroryList({
+                pseudo: user._id,
+                lists:[]
+              })
+              history.save()
+            })
+
+            res.status(201).json({ message: 'User created !' })
+          })
           .catch(error => res.status(400).json({ error }));
       })
       .catch(error => res.status(500).json({ error }));
 };
 
 exports.login = (req, res, next) => {
+    const errors = validationResult(req)
+    if (!errors.isEmpty()) {
+      return res.status(401).json({ errors: "User or password invalid" })
+    }
+
     User.findOne({ pseudo: req.body.pseudo })
       .then(user => {
         if (!user) {
-          return res.status(401).json({ error: 'Utilisateur non trouvé !' });
+          return res.status(401).json({ error: 'User not found !' });
         }
         bcrypt.compare(req.body.password, user.password)
           .then(valid => {
             if (!valid) {
-              return res.status(401).json({ error: 'Mot de passe incorrect !' });
+              return res.status(401).json({ error: 'Invalid password !' });
             }
             res.status(200).json({
               userId: user._id,

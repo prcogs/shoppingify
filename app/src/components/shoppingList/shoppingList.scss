@@ -1,0 +1,170 @@
+@import "../../styles/main.scss";
+
+.shoppingList {
+    position: relative;
+    width: 80%;
+    height: 75vh;
+    margin: auto;
+
+    &__input {
+        width: 80%;
+        height: 3rem;
+
+        background-color: $color-background-rigth;
+        border: none;
+        border-bottom: 2px solid $color-primary;
+        font-family: 'Quicksand', sans-serif;
+        font-size: 24px;
+        font-weight: 700;
+        margin-bottom: 1rem;
+        padding: 8px;
+
+        &::placeholder {
+            color: $color-backdrop;
+            font-family: 'Quicksand', sans-serif;
+        } 
+    }
+
+    &__checkbox {
+        &--completed {
+            display: inline;
+        }
+    }
+
+    &__allBtn {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+
+        margin-top: 1rem;
+
+        &__btn {
+            width: 6rem;
+
+            border-radius: 10px;
+            font-family: 'Quicksand', sans-serif;
+            font-size: 16px;
+            font-weight: 700;
+            padding: 10px;
+
+            @media (max-width:$screen-large-max) {
+                width: auto;
+            }
+        }
+
+        &--cancel {
+            background-color: $color-backdrop;
+            margin-right: .3rem;
+        }
+
+        &--save {
+            color: $color-background-item;
+            background-color: $color-primary;
+            margin-left: .3rem;
+
+            &:disabled,
+            &[disabled] {
+                color: $color-primary;
+            }
+        }
+
+        &--update {
+            color: white;
+            background-color: #56CCF2;
+            margin-left: .5rem;
+
+            &:disabled,
+            &[disabled] {
+                color: #56CCF2;
+            }
+        }
+
+        &--containerModalCancel {
+            position: absolute;
+            top: -12rem;
+            right: -2.5vw;
+            z-index: 10;
+
+            width: 100vw;
+            height: 110vh;
+
+            background-color: rgba($color: #000000, $alpha: 0.1);
+
+            @media (max-width:$screen-large-max) {
+                right: -3.3vw;
+            }
+
+            @media (max-width:$screen-large-medium) {
+                right: -8.5vw;
+            }
+        }
+
+        &--modalCancel {
+            // display: flex;
+            width: 30vw;
+            // z-index: 15;
+
+            background-color: white;
+            border-radius: 24px;
+            margin: auto;
+            margin-top: 35vh;
+            padding: 10px;
+            text-align: center;
+
+            @media (max-width:$screen-large-max) {
+                width: 45vw;
+            }
+
+            @media (max-width:$screen-large-medium) {
+                width: 60vw;
+            }
+
+            &--btnYes {
+                color: white;
+                background-color:#EB5757;
+                border-radius: 12px;
+                font-family: 'Quicksand', sans-serif;
+                font-size: 16px;
+                font-weight: 700;
+                padding: 10px 15px 10px 15px;
+            }
+
+            &--btnNo {
+                background-color: transparent;
+                font-family: 'Quicksand', sans-serif;
+                font-size: 16px;
+                font-weight: 700;
+            }
+        }
+    }
+
+    &__msg {
+        text-align: center;
+    }
+
+    &__containerSvg {
+        text-align: center;
+    }
+
+    &__svg {
+        max-width: 80%;
+        margin-top: 5rem;
+    }
+}
+
+// .modalCancelContainer {
+//     position: absolute;
+//     // z-index: 100;
+//     width: 100vw;
+//     height: 100vh;
+// }
+
+// .modalCancel {
+//     position: absolute;
+//     right: 34vw;
+//     top: 12vh;
+//     // z-index: 101;
+//     background-color: white;
+//     width: 18rem;
+//     border: 1px solid black;
+// }

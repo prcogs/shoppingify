@@ -1,0 +1,61 @@
+@import "../../styles/main.scss";
+
+
+.rigthWrapper {
+    position: fixed;
+    background-color: $color-background-rigth;
+    margin-left: 75vw;
+    height: 100vh;
+
+    @media (max-width:$screen-large-max) {
+        
+        margin-left: 67vw;
+    }
+
+    @media (max-width:$screen-large-medium) {
+        &--none {
+            display: none;
+        }
+    }
+
+    @media (max-width:$screen-large-medium) {
+        margin-left: 15vw;
+    }
+
+    &__container {
+        position: relative;
+        width: 25vw;
+        padding-top: 2rem;
+
+        @media (max-width:$screen-large-max) {
+            width: 33vw;
+        }
+
+        @media (max-width:$screen-large-medium) {
+            width: 85vw;
+            margin-left: 0;
+        }
+    }
+}
+
+.msgAPI {
+    position: absolute;
+    top:0;
+    right: 50px;
+
+    z-index: 3;
+    border-radius: 5px;
+    // max-width: 5rem;
+    padding: 15px 60px 15px 60px;
+    font-size: 18px;
+
+    &--true {
+        color: white;
+        background-color:#32CD32 ;
+    }
+
+    &--false {
+        color: white;
+        background-color:#960909 ;
+    }
+}
