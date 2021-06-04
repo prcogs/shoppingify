@@ -11,13 +11,6 @@ const app = express();
 
 const { api_key, api_username, app_url_production, app_url_dev } = require('./config');
 
-let client_url
-if(!isNaN(process.env.PORT)) {
-  client_url = app_url_production
-} else {
-  client_url = app_url_dev
-}
-
 mongoose.connect(`mongodb+srv://${api_username}:${api_key}@cluster0.fg3g6.mongodb.net/shoppingify?retryWrites=true&w=majority`,
   { useNewUrlParser: true,
     useUnifiedTopology: true })
@@ -27,10 +20,10 @@ mongoose.connect(`mongodb+srv://${api_username}:${api_key}@cluster0.fg3g6.mongod
 
 
 app.use((req, res, next) => {
-    res.setHeader('Access-Control-Allow-Origin', client_url);
-    res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content, Accept, Content-Type, Authorization');
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH, OPTIONS');
-    next();
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content, Accept, Content-Type, Authorization');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH, OPTIONS');
+  next();
 });
 
 app.use(bodyParser.json());
