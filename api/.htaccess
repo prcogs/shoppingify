@@ -1,0 +1,15 @@
+# DO NOT REMOVE. CLOUDLINUX PASSENGER CONFIGURATION BEGIN
+PassengerAppRoot "/home/florebgh/shoppingifyapi.florianf0-project.fr"
+PassengerBaseURI "/"
+PassengerNodejs "/home/florebgh/nodevenv/shoppingifyapi.florianf0-project.fr/10/bin/node"
+PassengerAppType node
+PassengerStartupFile server.js
+# DO NOT REMOVE. CLOUDLINUX PASSENGER CONFIGURATION END
+# DO NOT REMOVE OR MODIFY. CLOUDLINUX ENV VARS CONFIGURATION BEGIN
+<IfModule Litespeed>
+SetEnv API_USERNAME precogs
+SetEnv API_KEY aeqwLXTx5XzAsgZ
+SetEnv APP_URL_PRODUCTION https://shoppingify.florianf0-project.fr/
+SetEnv APP_URL_DEV http://localhost:3000/
+</IfModule>
+# DO NOT REMOVE OR MODIFY. CLOUDLINUX ENV VARS CONFIGURATION END
