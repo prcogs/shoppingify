@@ -11,7 +11,7 @@ const app = express();
 
 const { api_key, api_username, app_url_production, app_url_dev } = require('./config');
 
-mongoose.connect(`mongodb+srv://${api_username}:${api_key}@cluster0.fg3g6.mongodb.net/shoppingify?retryWrites=true&w=majority`,
+mongoose.connect(`mongodb+srv://precogs:awg*ety6FQP5bjt4xmf@cluster0.fg3g6.mongodb.net/shoppingify?retryWrites=true&w=majority`,
   { useNewUrlParser: true,
     useUnifiedTopology: true })
   .then(() =>  { console.log('Connexion à MongoDB réussie !')})
